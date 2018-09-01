@@ -20,6 +20,7 @@ object VersionNumberTest : Spek({
             }
         }
     }
+
     given("version ''") {
         val sut = VersionNumber("")
 
@@ -28,6 +29,32 @@ object VersionNumberTest : Spek({
                 assertThat(sut.version, equalTo(""))
                 assertThat(sut.MAJOR, equalTo(0))
                 assertThat(sut.MINOR, equalTo(0))
+                assertThat(sut.PATCH, equalTo(0))
+            }
+        }
+    }
+
+    given("version 4") {
+        val sut = VersionNumber("4")
+
+        on("all values") {
+            it("have correct vesion number") {
+                assertThat(sut.version, equalTo("4"))
+                assertThat(sut.MAJOR, equalTo(4))
+                assertThat(sut.MINOR, equalTo(0))
+                assertThat(sut.PATCH, equalTo(0))
+            }
+        }
+    }
+
+    given("version 2.3") {
+        val sut = VersionNumber("2.3")
+
+        on("all values") {
+            it("have correct vesion number") {
+                assertThat(sut.version, equalTo("2.3"))
+                assertThat(sut.MAJOR, equalTo(2))
+                assertThat(sut.MINOR, equalTo(3))
                 assertThat(sut.PATCH, equalTo(0))
             }
         }
