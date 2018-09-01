@@ -35,7 +35,7 @@ data class VersionNumber(val version: String): Comparable<VersionNumber> {
         private val PATTERN = """^(\d+)(\.(\d+))?(\.(\d+))?$""".toRegex()
         private fun versionMatcher(version: String) = PATTERN.matchEntire(version)?.groupValues.orEmpty()
         private fun versionAt(matches: List<String>, position: Int): Int {
-            return matches.getOrElse(position) { "0" }.toIntOrNull() ?: 0
+            return matches.getOrNull(position)?.toIntOrNull() ?: 0
         }
     }
 }
