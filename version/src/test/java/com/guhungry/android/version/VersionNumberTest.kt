@@ -17,7 +17,18 @@ object VersionNumberTest : Spek({
                 assertThat(sut.MAJOR, equalTo(12))
                 assertThat(sut.MINOR, equalTo(2))
                 assertThat(sut.PATCH, equalTo(3))
-                assertThat(sut.version, equalTo("12.2.3"))
+            }
+        }
+    }
+    given("version ''") {
+        val sut = VersionNumber("")
+
+        on("all values") {
+            it("have correct vesion number") {
+                assertThat(sut.version, equalTo(""))
+                assertThat(sut.MAJOR, equalTo(0))
+                assertThat(sut.MINOR, equalTo(0))
+                assertThat(sut.PATCH, equalTo(0))
             }
         }
     }
