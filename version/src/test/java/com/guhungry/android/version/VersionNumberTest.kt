@@ -77,24 +77,61 @@ object VersionNumberTest : Spek({
         val sut1 = VersionNumber("2.4.1")
         val sut2 = VersionNumber("1.2.2")
 
-        on("compare") {
+        on("compare 2.4.1 with 1.2.2") {
             it("should more than") {
                 assertThat(sut1 == sut2, equalTo(false))
                 assertThat(sut1 > sut2, equalTo(true))
                 assertThat(sut1 < sut2, equalTo(false))
             }
         }
+
+        on("compare 1.2.2 with 2.4.1") {
+            it("should less than") {
+                assertThat(sut2 == sut1, equalTo(false))
+                assertThat(sut2 > sut1, equalTo(false))
+                assertThat(sut2 < sut1, equalTo(true))
+            }
+        }
     }
 
-    given("version 2.1.4 and 5.7.1") {
-        val sut1 = VersionNumber("2.1.4")
+    given("version 5.1.4 and 5.7.1") {
+        val sut1 = VersionNumber("5.1.4")
         val sut2 = VersionNumber("5.7.1")
 
-        on("compare") {
+        on("compare 5.1.4 with 5.7.1") {
             it("should less than") {
                 assertThat(sut1 == sut2, equalTo(false))
                 assertThat(sut1 > sut2, equalTo(false))
                 assertThat(sut1 < sut2, equalTo(true))
+            }
+        }
+
+        on("compare 5.7.1 with 5.1.4") {
+            it("should more than") {
+                assertThat(sut2 == sut1, equalTo(false))
+                assertThat(sut2 > sut1, equalTo(true))
+                assertThat(sut2 < sut1, equalTo(false))
+            }
+        }
+    }
+
+    given("version 2.5.6 and 2.5.2") {
+        val sut1 = VersionNumber("2.5.6")
+        val sut2 = VersionNumber("2.5.2")
+
+        on("compare 2.5.6 with 2.5.2") {
+            it("should more than") {
+                assertThat(sut1 == sut2, equalTo(false))
+                assertThat(sut1 > sut2, equalTo(true))
+                assertThat(sut1 < sut2, equalTo(false))
+            }
+        }
+
+        on("compare 2.5.2 with 2.5.6") {
+            it("should less than") {
+                assertThat(sut2 == sut1, equalTo(false))
+                assertThat(sut2 > sut1, equalTo(false))
+                assertThat(sut2 < sut1, equalTo(true))
             }
         }
     }
