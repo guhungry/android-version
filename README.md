@@ -4,6 +4,20 @@
 
 Simple version number compare in MAJOR(.MINOR)?(.PATCH)? format
 
+## Download
+Add dependency in module `build.gradle`
+```
+repositories {
+    maven { url  "https://dl.bintray.com/guhungry1/maven" }
+}
+
+dependencies {
+    implementation 'com.guhungry.android:version:0.0.1'
+}
+```
+
+[ ![Download](https://api.bintray.com/packages/guhungry1/maven/com.guhungry.android%3Aversion/images/download.svg) ](https://bintray.com/guhungry1/maven/com.guhungry.android%3Aversion/_latestVersion)
+
 ## Examples
 ```
 import com.guhungry.android.version.VersionNumber
