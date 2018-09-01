@@ -8,28 +8,15 @@ import org.jetbrains.spek.api.dsl.it
 import org.jetbrains.spek.api.dsl.on
 
 object VersionNumberTest : Spek({
-    given("version 12.2.3") {
-        val sut = VersionNumber("12.2.3")
-
-        on("all values") {
-            it("have correct vesion number") {
-                assertThat(sut.version, equalTo("12.2.3"))
-                assertThat(sut.MAJOR, equalTo(12))
-                assertThat(sut.MINOR, equalTo(2))
-                assertThat(sut.PATCH, equalTo(3))
-            }
-        }
-    }
-
     given("version ''") {
         val sut = VersionNumber("")
 
         on("all values") {
             it("have correct vesion number") {
                 assertThat(sut.version, equalTo(""))
-                assertThat(sut.MAJOR, equalTo(0))
-                assertThat(sut.MINOR, equalTo(0))
-                assertThat(sut.PATCH, equalTo(0))
+                assertThat(sut.major, equalTo(0))
+                assertThat(sut.minor, equalTo(0))
+                assertThat(sut.patch, equalTo(0))
             }
         }
     }
@@ -40,9 +27,9 @@ object VersionNumberTest : Spek({
         on("all values") {
             it("have correct vesion number") {
                 assertThat(sut.version, equalTo("4"))
-                assertThat(sut.MAJOR, equalTo(4))
-                assertThat(sut.MINOR, equalTo(0))
-                assertThat(sut.PATCH, equalTo(0))
+                assertThat(sut.major, equalTo(4))
+                assertThat(sut.minor, equalTo(0))
+                assertThat(sut.patch, equalTo(0))
             }
         }
     }
@@ -53,9 +40,22 @@ object VersionNumberTest : Spek({
         on("all values") {
             it("have correct vesion number") {
                 assertThat(sut.version, equalTo("2.3"))
-                assertThat(sut.MAJOR, equalTo(2))
-                assertThat(sut.MINOR, equalTo(3))
-                assertThat(sut.PATCH, equalTo(0))
+                assertThat(sut.major, equalTo(2))
+                assertThat(sut.minor, equalTo(3))
+                assertThat(sut.patch, equalTo(0))
+            }
+        }
+    }
+
+    given("version 12.2.3") {
+        val sut = VersionNumber("12.2.3")
+
+        on("all values") {
+            it("have correct vesion number") {
+                assertThat(sut.version, equalTo("12.2.3"))
+                assertThat(sut.major, equalTo(12))
+                assertThat(sut.minor, equalTo(2))
+                assertThat(sut.patch, equalTo(3))
             }
         }
     }

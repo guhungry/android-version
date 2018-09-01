@@ -74,7 +74,7 @@ ext {
     libraryName = 'AndroidVersionNumber'
     artifact = 'version'
 
-    libraryDescription = 'Simple version number compare in MAJOR(.MINOR)?(.PATCH)? format'
+    libraryDescription = 'Simple version number compare in major(.minor)?(.patch)? format'
 
     siteUrl = 'https://github.com/guhungry/android-version'
     gitUrl = 'https://github.com/guhungry/android-version.git'
