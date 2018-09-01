@@ -1,4 +1,7 @@
 # android-version
+[![Build Status](https://travis-ci.org/guhungry/android-version.svg?branch=master)](https://travis-ci.org/guhungry/android-version)
+[![codecov](https://codecov.io/gh/guhungry/android-version/branch/master/graph/badge.svg)](https://codecov.io/gh/guhungry/android-version)
+
 Simple version number compare in MAJOR(.MINOR)?(.PATCH)? format
 
 ## Examples
