@@ -2,6 +2,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'de.mannodermaus.android-junit5'
 apply plugin: 'jacoco-android'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
 
 android {
     compileSdkVersion 28
@@ -10,7 +12,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
-        versionName "1.0"
+        versionName "0.0.1"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -62,4 +64,44 @@ dependencies {
     // Mockito
     testImplementation "org.mockito:mockito-core:$mockito_version"
     androidTestImplementation "org.mockito:mockito-android:$mockito_version"
+}
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'com.guhungry.android:version'
+
+    publishedGroupId = 'com.guhungry.android'
+    libraryName = 'AndroidVersionNumber'
+    artifact = 'version'
+
+    libraryDescription = 'Simple version number compare in MAJOR(.MINOR)?(.PATCH)? format'
+
+    siteUrl = 'https://github.com/guhungry/android-version'
+    gitUrl = 'https://github.com/guhungry/android-version.git'
+
+    libraryVersion = android.defaultConfig.versionName
+
+    developerId = 'guhungry1'
+    developerName = 'Woraphot Chokratanasombat'
+    developerEmail = 'Woraphot Chokratanasombat'
+
+    licenseName = 'MIT'
+    licenseUrl = 'https://opensource.org/licenses/MIT'
+    allLicenses = ["MIT"]
+}
+
+apply from: "$rootDir/gradle/jcenter.gradle"
+
+if (project.hasProperty('bintrayUser') && project.hasProperty('bintrayKey')) {
+    bintray.user = project.property('bintrayUser')
+    bintray.key = project.property('bintrayKey')
+
+    println project.property('bintrayUser')
+    println project.property('bintrayKey')
+} else if (project.rootProject.file('local.properties').exists()) {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+    bintray.user = properties.getProperty("bintrayUser")
+    bintray.key = properties.getProperty("bintrayKey")
 }
