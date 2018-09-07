@@ -18,15 +18,7 @@ data class VersionNumber(val version: String): Comparable<VersionNumber> {
     /////////////
     // Comparable
     /////////////
-    override fun compareTo(other: VersionNumber): Int {
-        if (major > other.major) return 1
-        if (major < other.major) return -1
-        if (minor > other.minor) return 1
-        if (minor < other.minor) return -1
-        if (patch > other.patch) return 1
-        if (patch < other.patch) return -1
-        return 0
-    }
+    override fun compareTo(other: VersionNumber) = COMPARATOR.compare(this, other)
 
     //////////////////
     // Version Extract
@@ -37,5 +29,7 @@ data class VersionNumber(val version: String): Comparable<VersionNumber> {
         private fun versionAt(matches: List<String>, position: Int): Int {
             return matches.getOrNull(position)?.toIntOrNull() ?: 0
         }
+
+        private val COMPARATOR = compareBy(VersionNumber::major, VersionNumber::minor, VersionNumber::patch)
     }
 }
