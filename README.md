@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.guhungry.android:version:0.0.1'
+    implementation 'com.guhungry.android:version:0.0.3'
 }
 ```
 
