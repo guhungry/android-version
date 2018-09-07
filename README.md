@@ -8,7 +8,7 @@ Simple version number compare in MAJOR(.MINOR)?(.PATCH)? format
 Add dependency in module `build.gradle`
 ```
 repositories {
-    maven { url  "https://dl.bintray.com/guhungry1/maven" }
+    jcenter()
 }
 
 dependencies {
