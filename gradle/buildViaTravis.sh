@@ -15,3 +15,9 @@ else
   echo -e 'WARN: Should not be here => Branch ['$TRAVIS_BRANCH']  Tag ['$TRAVIS_TAG']  Pull Request ['$TRAVIS_PULL_REQUEST']'
   ./gradlew :version:build :version:jacocoTestReport
 fi
+
+./gradlew sonarqube \
+  -Dsonar.projectKey=guhungry_android-version \
+  -Dsonar.organization=guhungry-github \
+  -Dsonar.host.url=https://sonarcloud.io \
+  -Dsonar.login=$sonarqubeKey
